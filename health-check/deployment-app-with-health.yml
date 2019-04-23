@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-with-health
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: app-with-health
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: app-with-health
+    spec:
+      containers:
+        - name: app-with-health
+          image: under/app-with-health
+          ports:
+            - containerPort: 8000
+              name: app-with-health
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-with-health
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    app: app-with-health
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 8000
+    name: http
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: app-with-health
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: dev.under.local
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: app-with-health
+              servicePort: 8000

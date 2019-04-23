@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: health-notifier
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: health-notifier
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: health-notifier
+    spec:
+      containers:
+        - name: health-notifier
+          image: under/health-notifier
+          env:
+            - name: APP_WITH_HEALTH_URL
+              value: http://app-with-health:8000
+          ports:
+            - containerPort: 8001
+              name: health-notifier
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: health-notifier
+spec:
+  type: NodePort
+  selector:
+    app: health-notifier
+  ports:
+  - port: 8000
+    targetPort: 8000
+    name: http
