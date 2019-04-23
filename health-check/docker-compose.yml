@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app-with-health:
+    build: app-with-health/
+    container_name: app-with-health
+    network_mode: host
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/actuator/health"]
+      disable: false
+      retries: 1
+      interval: 1s
+  health-notifier:
+    build: health-notifier
+    container_name: health-notifier
+    network_mode: host
+    environment:
+      APP_WITH_HEALTH_URL: http://localhost:8000
