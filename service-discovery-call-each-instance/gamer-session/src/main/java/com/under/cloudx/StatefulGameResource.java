@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Random;
 
 import static java.util.Arrays.asList;
@@ -35,9 +34,9 @@ public class StatefulGameResource {
     }
 
     private void pickupGame() {
-        List<String> playableGames = asList("Team Fortress", "UnrealTournament", "Final Fantasy");
+        var playableGames = asList("Team Fortress", "UnrealTournament", "Final Fantasy");
 
-        int aleatoryItem = new Random().nextInt(playableGames.size());
+        var aleatoryItem = new Random().nextInt(playableGames.size());
         game = new Game( playableGames.get(aleatoryItem) );
         log.info("Picked up : {}", game);
     }

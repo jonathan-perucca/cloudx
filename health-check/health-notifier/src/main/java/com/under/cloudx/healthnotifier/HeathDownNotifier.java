@@ -31,7 +31,7 @@ public class HeathDownNotifier {
 
     @Scheduled(cron = "*/2 * * * * ?")
     public void checkHealth() {
-        RequestEntity requestEntity = RequestEntity
+        var requestEntity = RequestEntity
                 .method(HttpMethod.GET, URI.create(appUrl + ENDPOINT))
                 .accept(MediaType.APPLICATION_JSON)
                 .build();
