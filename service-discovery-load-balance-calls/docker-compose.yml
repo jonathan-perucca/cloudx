@@ -4,37 +4,37 @@ services:
     image: consul:1.4.4
     network_mode: host
   gamer-session-1:
-    build: gamer-session/
+    image: cloudx/gamer-session
     container_name: gamer-session-1
     network_mode: host
     environment:
       SERVER_PORT: 8002
   gamer-session-2:
-    build: gamer-session/
+    image: cloudx/gamer-session
     container_name: gamer-session-2
     network_mode: host
     environment:
       SERVER_PORT: 8003
   gamer-session-3:
-    build: gamer-session/
+    image: cloudx/gamer-session
     container_name: gamer-session-3
     network_mode: host
     environment:
       SERVER_PORT: 8004
   gamer-session-4:
-    build: gamer-session/
+    image: cloudx/gamer-session
     container_name: gamer-session-4
     network_mode: host
     environment:
       SERVER_PORT: 8005
   gamer-session-5:
-    build: gamer-session/
+    image: cloudx/gamer-session
     container_name: gamer-session-5
     network_mode: host
     environment:
       SERVER_PORT: 8006
   gamer-center:
-    build: gamer-center/
+    image: cloudx/gamer-center
     container_name: gamer-center
     network_mode: host
     environment:

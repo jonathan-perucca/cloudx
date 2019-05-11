@@ -2,11 +2,8 @@
 
 ./cleanup.sh
 
-mvn clean package -DskipTests -f gamer-creator/pom.xml
-mvn clean package -DskipTests -f gamer-emailer/pom.xml
-
-docker build gamer-creator/ -t cloudx/gamer-creator
-docker build gamer-emailer/ -t cloudx/gamer-emailer
+mvn compile jib:dockerBuild -f gamer-creator/pom.xml
+mvn compile jib:dockerBuild -f gamer-emailer/pom.xml
 
 docker run --rm --name dev-rabbit --network host -d -t rabbitmq:3.7-management
 docker run --rm --name gamer-creator --network host -e SERVER_PORT=8002 -d -t cloudx/gamer-creator

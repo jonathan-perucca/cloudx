@@ -2,11 +2,8 @@
 
 ./cleanup.sh
 
-mvn clean package -DskipTests -f gamer-session/pom.xml
-mvn clean package -DskipTests -f gamer-center/pom.xml
-
-docker build gamer-session/ -t cloudx/gamer-session
-docker build gamer-center/ -t cloudx/gamer-center
+mvn compile jib:dockerBuild -f gamer-session/pom.xml
+mvn compile jib:dockerBuild -f gamer-center/pom.xml
 
 docker run --rm --name dev-consul --network host -d -t consul:1.4.4
 docker run --rm --name gamer-session1 --network host -e SERVER_PORT=8002 -d -t cloudx/gamer-session

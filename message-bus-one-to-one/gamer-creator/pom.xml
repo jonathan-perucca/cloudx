@@ -51,6 +51,22 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>1.2.0</version>
+				<configuration>
+					<to>
+						<image>cloudx/${project.artifactId}</image>
+					</to>
+					<container>
+						<ports>
+							<port>8000</port>
+						</ports>
+						<useCurrentTimestamp>true</useCurrentTimestamp>
+					</container>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

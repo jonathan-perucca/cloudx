@@ -1,7 +1,7 @@
 version: '3'
 services:
   app-with-health:
-    build: app-with-health/
+    image: cloudx/app-with-health
     container_name: app-with-health
     network_mode: host
     healthcheck:
@@ -10,7 +10,7 @@ services:
       retries: 1
       interval: 1s
   health-notifier:
-    build: health-notifier
+    image: cloudx/health-notifier
     container_name: health-notifier
     network_mode: host
     environment:
