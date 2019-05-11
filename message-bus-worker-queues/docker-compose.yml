@@ -1,0 +1,23 @@
+version: '3'
+services:
+  dev-rabbit:
+    image: rabbitmq:3.7-management
+    network_mode: host
+  gamer-creator:
+    build: gamer-creator/
+    container_name: gamer-creator
+    network_mode: host
+    environment:
+      SERVER_PORT: 8002
+  gamer-emailer-one:
+    build: gamer-emailer/
+    container_name: gamer-emailer1
+    network_mode: host
+    environment:
+      SERVER_PORT: 8001
+  gamer-emailer-two:
+    build: gamer-emailer/
+    container_name: gamer-emailer2
+    network_mode: host
+    environment:
+      SERVER_PORT: 8003
