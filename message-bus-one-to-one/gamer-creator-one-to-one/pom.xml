@@ -10,9 +10,9 @@
 	</parent>
 
 	<groupId>com.under.cloudx</groupId>
-	<artifactId>gamer-emailer</artifactId>
+	<artifactId>gamer-creator-one-to-one</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>gamer-emailer</name>
+	<name>gamer-creator-one-to-one</name>
 	<packaging>jar</packaging>
 
 	<properties>

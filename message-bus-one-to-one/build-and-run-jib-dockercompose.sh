@@ -2,7 +2,7 @@
 
 ./cleanup.sh
 
-mvn compile jib:dockerBuild -f gamer-creator/pom.xml
-mvn compile jib:dockerBuild -f gamer-emailer/pom.xml
+mvn compile jib:dockerBuild -f gamer-creator-one-to-one/pom.xml
+mvn compile jib:dockerBuild -f gamer-emailer-one-to-one/pom.xml
 
 docker-compose up

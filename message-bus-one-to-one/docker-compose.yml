@@ -2,16 +2,17 @@ version: '3'
 services:
   dev-rabbit:
     image: rabbitmq:3.7-management
+    container_name: dev-rabbit
     network_mode: host
-  gamer-creator:
-    image: cloudx/gamer-creator
-    container_name: gamer-creator
+  gamer-creator-one-to-one:
+    image: cloudx/gamer-creator-one-to-one
+    container_name: gamer-creator-one-to-one
     network_mode: host
     environment:
       SERVER_PORT: 8002
-  gamer-emailer:
-    image: cloudx/gamer-emailer
-    container_name: gamer-emailer
+  gamer-emailer-one-to-one:
+    image: cloudx/gamer-emailer-one-to-one
+    container_name: gamer-emailer-one-to-one
     network_mode: host
     environment:
       SERVER_PORT: 8001
