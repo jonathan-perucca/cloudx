@@ -2,6 +2,7 @@ version: '3'
 services:
   dev-rabbit:
     image: rabbitmq:3.7-management
+    container_name: dev-rabbit
     network_mode: host
   gamer-creator-pub-sub:
     image: cloudx/gamer-creator-pub-sub
