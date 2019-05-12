@@ -1,0 +1,23 @@
+version: '3'
+services:
+  dev-rabbit:
+    image: rabbitmq:3.7-management
+    network_mode: host
+  gamer-creator-pub-sub:
+    image: cloudx/gamer-creator-pub-sub
+    container_name: gamer-creator-pub-sub
+    network_mode: host
+    environment:
+      SERVER_PORT: 8002
+  gamer-emailer-pub-sub:
+    image: cloudx/gamer-emailer-pub-sub
+    container_name: gamer-emailer-pub-sub
+    network_mode: host
+    environment:
+      SERVER_PORT: 8001
+  gamer-logevent-pub-sub:
+    image: cloudx/gamer-logevent-pub-sub
+    container_name: gamer-logevent-pub-sub
+    network_mode: host
+    environment:
+      SERVER_PORT: 8003
