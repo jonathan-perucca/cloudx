@@ -2,7 +2,8 @@
 
 ./cleanup.sh
 
-mvn compile jib:dockerBuild -f gamer-session/pom.xml
-mvn compile jib:dockerBuild -f gamer-center/pom.xml
+mvn compile jib:dockerBuild -f gamer-session-each-instance/pom.xml
+mvn compile jib:dockerBuild -f gamer-center-each-instance/pom.xml
 
-docker-compose up
+docker-compose up -d
+docker-compose logs -f gamer-center

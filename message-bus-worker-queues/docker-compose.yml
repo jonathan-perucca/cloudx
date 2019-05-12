@@ -4,21 +4,21 @@ services:
     image: rabbitmq:3.7-management
     container_name: dev-rabbit
     network_mode: host
-  gamer-creator-worker-queues:
+  gamer-creator:
     image: cloudx/gamer-creator-worker-queues
-    container_name: gamer-creator-worker-queues
+    container_name: gamer-creator
     network_mode: host
     environment:
       SERVER_PORT: 8002
-  gamer-emailer-one-worker-queues:
+  gamer-emailer1:
     image: cloudx/gamer-emailer-worker-queues
-    container_name: gamer-emailer-worker-queues1
+    container_name: gamer-emailer1
     network_mode: host
     environment:
       SERVER_PORT: 8001
-  gamer-emailer-two-worker-queues:
+  gamer-emailer2:
     image: cloudx/gamer-emailer-worker-queues
-    container_name: gamer-emailer-worker-queues2
+    container_name: gamer-emailer2
     network_mode: host
     environment:
       SERVER_PORT: 8003

@@ -1,40 +1,41 @@
 version: '3'
 services:
-  consul:
+  dev-consul:
     image: consul:1.4.4
+    container_name: dev-consul
     network_mode: host
-  gamer-session-1:
-    image: cloudx/gamer-session
-    container_name: gamer-session-1
+  gamer-session1:
+    image: cloudx/gamer-session-load-balanced
+    container_name: gamer-session1
     network_mode: host
     environment:
       SERVER_PORT: 8002
-  gamer-session-2:
-    image: cloudx/gamer-session
-    container_name: gamer-session-2
+  gamer-session2:
+    image: cloudx/gamer-session-load-balanced
+    container_name: gamer-session2
     network_mode: host
     environment:
       SERVER_PORT: 8003
-  gamer-session-3:
-    image: cloudx/gamer-session
-    container_name: gamer-session-3
+  gamer-session3:
+    image: cloudx/gamer-session-load-balanced
+    container_name: gamer-session3
     network_mode: host
     environment:
       SERVER_PORT: 8004
-  gamer-session-4:
-    image: cloudx/gamer-session
-    container_name: gamer-session-4
+  gamer-session4:
+    image: cloudx/gamer-session-load-balanced
+    container_name: gamer-session4
     network_mode: host
     environment:
       SERVER_PORT: 8005
-  gamer-session-5:
-    image: cloudx/gamer-session
-    container_name: gamer-session-5
+  gamer-session5:
+    image: cloudx/gamer-session-load-balanced
+    container_name: gamer-session5
     network_mode: host
     environment:
       SERVER_PORT: 8006
   gamer-center:
-    image: cloudx/gamer-center
+    image: cloudx/gamer-center-load-balanced
     container_name: gamer-center
     network_mode: host
     environment:
